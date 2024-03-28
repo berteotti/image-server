@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getData } from "./google-analytics";
+import { getData } from "../ga/google-analytics";
 // App router includes @vercel/og.
 // No need to install it.
 
@@ -34,6 +34,11 @@ export async function GET() {
     {
       width: 800,
       height: 480,
+      headers: {
+        "Cache-Control": "max-age=10",
+        "CDN-Cache-Control": "max-age=60",
+        "Vercel-CDN-Cache-Control": "max-age=1800",
+      },
     }
   );
 }
