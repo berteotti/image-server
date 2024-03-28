@@ -3,6 +3,8 @@ import { getData } from "../ga/google-analytics";
 // App router includes @vercel/og.
 // No need to install it.
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const usersData = await getData();
 
