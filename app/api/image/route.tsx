@@ -1,10 +1,18 @@
 import { ImageResponse } from "next/og";
+import { getData } from "./google-analytics";
 // App router includes @vercel/og.
 // No need to install it.
 
-export const runtime = "edge";
-
 export async function GET() {
+  const usersData = await getData();
+
+  const activeUsers =
+    usersData.rows &&
+    usersData.rows[0].metricValues &&
+    usersData.rows[0].metricValues[0].value;
+  console.log(usersData);
+  console.log(activeUsers);
+
   return new ImageResponse(
     (
       <div
@@ -18,9 +26,10 @@ export async function GET() {
           textAlign: "center",
           justifyContent: "center",
           alignItems: "center",
+          display: "flex",
         }}
       >
-        👋 Diogo é gay
+        Gymious had {activeUsers} active users in the last 24 hours
       </div>
     ),
     {
