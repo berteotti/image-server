@@ -12,19 +12,39 @@ const analyticsDataClient = new BetaAnalyticsDataClient({
 
 export async function getData() {
   // 👇 Running a simple report
-  const [response] = await analyticsDataClient.runReport({
+  // const [response] = await analyticsDataClient.runReport({
+  //   property: `properties/${propertyId}`,
+  //   dateRanges: [
+  //     {
+  //       startDate: `7daysAgo`, //👈  e.g. "7daysAgo" or "30daysAgo"
+  //       endDate: "today",
+  //     },
+  //   ],
+  //   dimensions: [
+  //     {
+  //       name: "month", // data will be year wise
+  //     },
+  //   ],
+  //   metrics: [
+  //     {
+  //       name: "activeUsers", // it returs the active users
+  //     },
+  //   ],
+  // });
+
+  const [response] = await analyticsDataClient.runRealtimeReport({
     property: `properties/${propertyId}`,
-    dateRanges: [
+    minuteRanges: [
       {
-        startDate: `7daysAgo`, //👈  e.g. "7daysAgo" or "30daysAgo"
-        endDate: "today",
+        startMinutesAgo: 29,
+        endMinutesAgo: 0,
       },
     ],
-    dimensions: [
-      {
-        name: "month", // data will be year wise
-      },
-    ],
+    // dimensions: [
+    //   {
+    //     name: "country", // data will be country wise
+    //   },
+    // ],
     metrics: [
       {
         name: "activeUsers", // it returs the active users

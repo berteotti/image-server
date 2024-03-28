@@ -8,7 +8,9 @@ export async function GET() {
 
   const activeUsers =
     (usersData.rows &&
+      usersData.rows.length > 0 &&
       usersData.rows[0].metricValues &&
+      usersData.rows[0].metricValues.length > 0 &&
       usersData.rows[0].metricValues[0].value) ||
     0;
 
@@ -28,16 +30,16 @@ export async function GET() {
           display: "flex",
         }}
       >
-        Gymious had {activeUsers} active users in the last 7 days
+        Gymious had {activeUsers} active users in the last 30 minutes days
       </div>
     ),
     {
       width: 800,
       height: 480,
       headers: {
-        "Cache-Control": "max-age=10",
-        "CDN-Cache-Control": "max-age=60",
-        "Vercel-CDN-Cache-Control": "max-age=1800",
+        "Cache-Control": "max-age=5",
+        "CDN-Cache-Control": "max-age=10",
+        "Vercel-CDN-Cache-Control": "max-age=15",
       },
     }
   );
