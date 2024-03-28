@@ -7,11 +7,10 @@ export async function GET() {
   const usersData = await getData();
 
   const activeUsers =
-    usersData.rows &&
-    usersData.rows[0].metricValues &&
-    usersData.rows[0].metricValues[0].value;
-  console.log(usersData);
-  console.log(activeUsers);
+    (usersData.rows &&
+      usersData.rows[0].metricValues &&
+      usersData.rows[0].metricValues[0].value) ||
+    0;
 
   return new ImageResponse(
     (
@@ -29,7 +28,7 @@ export async function GET() {
           display: "flex",
         }}
       >
-        Gymious had {activeUsers} active users in the last 24 hours
+        Gymious had {activeUsers} active users in the last 7 days
       </div>
     ),
     {
