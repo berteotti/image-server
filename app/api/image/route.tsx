@@ -18,19 +18,29 @@ export async function GET() {
     (
       <div
         style={{
-          fontSize: 40,
+          fontSize: 20,
           color: "black",
           background: "white",
           width: "100%",
           height: "100%",
-          padding: "50px 200px",
+          padding: "50px 100px",
           textAlign: "center",
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
+          flexDirection: "column",
         }}
       >
-        Gymious had {activeUsers} active users in the last 30 minutes days
+        <div>Gymious active users in last 30 minutes</div>
+        <div
+          style={{
+            fontSize: 80,
+            fontWeight: 800,
+            display: "flex",
+          }}
+        >
+          {activeUsers}
+        </div>
       </div>
     ),
     {
