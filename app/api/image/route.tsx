@@ -33,7 +33,8 @@ export async function GET() {
           flexDirection: "column",
         }}
       >
-        <div>Gymious active users in last 30 minutes</div>
+        <div>Gymious active users</div>
+        <div>Last 30 minutes</div>
         <div
           style={{
             fontSize: 80,
