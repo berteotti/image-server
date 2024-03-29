@@ -20,7 +20,7 @@ export async function GET() {
     (
       <div
         style={{
-          fontSize: 20,
+          fontSize: 40,
           color: "black",
           background: "white",
           width: "100%",
